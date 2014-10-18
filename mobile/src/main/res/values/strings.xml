@@ -2,7 +2,15 @@
 <resources>
 
     <string name="app_name">GDG_WEAR</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="AppTitle">Super Hero</string>
+
+    <string name="action_settings">Setup your hero</string>
+    <string name="settings_message_list">Emergency message</string>
+    <string name="settings_message_numbers">Send Message To…</string>
+    <string name="settings_phone_numbers">Call To…</string>
+    <string name="settings">Settings</string>
+    <string name="settings_messages_screen_summary">Select default message to send</string>
+    <string name="settings_message_numbers_summary">List of contacts to be notified</string>
+    <string name="settings_phone_numbers_summary">Select a number to call</string>
 
 </resources>

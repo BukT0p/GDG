@@ -4,7 +4,7 @@ def appendVersionNameVersionCode(variant) {
 
     def fileNamePostfix = "-v_${variant.mergedFlavor.versionName}-c_${variant.mergedFlavor.versionCode}-d_${new Date().format("MMddyyyy-HHmm")}.apk";
 
-    if(variant.zipAlign) {
+    if (variant.zipAlign) {
         def file = variant.outputFile
         def fileName = file.name.replace(".apk", fileNamePostfix)
         variant.outputFile = new File(file.parent, fileName)
@@ -48,7 +48,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    applicationVariants.matching({ it.buildType.name == android.buildTypes.release.name }).all {appendVersionNameVersionCode(it)}
+    applicationVariants.matching({ it.buildType.name == android.buildTypes.release.name }).all {
+        appendVersionNameVersionCode(it)
+    }
 }
 
 dependencies {
@@ -62,7 +64,7 @@ dependencies {
     compile 'com.squareup.okhttp:okhttp:2.0.0'
     compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
     compile 'com.squareup.okio:okio:1.0.1'
-    compile ('com.squareup.retrofit:retrofit:1.6.1') {
+    compile('com.squareup.retrofit:retrofit:1.6.1') {
         exclude group: 'com.google.code.gson', module: 'gson'
     }
 }
