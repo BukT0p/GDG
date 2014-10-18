@@ -2,13 +2,13 @@ apply plugin: 'com.android.application'
 
 
 android {
-    compileSdkVersion 21
+    compileSdkVersion 20
     buildToolsVersion "21.0.0"
 
     defaultConfig {
         applicationId "com.dataart.vyakunin.gdg_wear"
-        minSdkVersion 20
-        targetSdkVersion 21
+        minSdkVersion 14
+        targetSdkVersion 20
         versionCode 1
         versionName "1.0"
     }
