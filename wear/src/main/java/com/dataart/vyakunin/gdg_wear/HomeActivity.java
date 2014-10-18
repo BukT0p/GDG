@@ -22,15 +22,17 @@ public class HomeActivity extends Activity {
             SendAlertFragment mSendAlertFragment;
             CallFragment mCallFragment;
             RecordFragment mRecordFragment;
+            VideoRecordFragment mVideoRecordFragment;
 
             @Override
             public void onLayoutInflated(WatchViewStub stub) {
                mPager = (GridViewPager) findViewById(R.id.grid_pager);
                 FragmentGridPagerAdapter adapter = new FragmentGridPagerAdapter(getFragmentManager()) {
+
                     @Override
                     public Fragment getFragment(int i, int i2) {
                         if(i == 0 && i2 == 0) {
-                            return getMainFragment(i, i2);
+                            return getMainFragment();
                         }
                         if(i == 1 && i2 == 0){
                             return getCallFragment();
@@ -47,12 +49,10 @@ public class HomeActivity extends Activity {
                         return null;
                     }
 
-                    private Fragment getMainFragment(int i, int i2) {
+                    private Fragment getMainFragment() {
                         if(mMainFragment == null){
                             mMainFragment = new MainFragment();
                         }
-                        mMainFragment = new MainFragment();
-                        mMainFragment.setText(String.format("%d %d", i, i2));
                         return mMainFragment;
                     }
 
@@ -89,7 +89,10 @@ public class HomeActivity extends Activity {
                     }
 
                     public Fragment getRecordVideoFragment() {
-                        return getMainFragment(2, 1);
+                        if(mVideoRecordFragment == null){
+                            mVideoRecordFragment = new VideoRecordFragment();
+                        }
+                        return mVideoRecordFragment;
                     }
                 };
                 mPager.setAdapter(adapter);
