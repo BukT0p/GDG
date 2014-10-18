@@ -1,6 +1,7 @@
 package com.dataart.vyakunin.gdg_wear;
 
 import android.app.Activity;
+import android.os.Bundle;
 import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
@@ -10,10 +11,10 @@ import org.androidannotations.annotations.EActivity;
 @EActivity(R.layout.activity_home)
 public class HomeActivity extends Activity {
 
-    public static final String SEND_ALERT = "android.gdg.send_alert";
-    public static final String CALL = "android.gdg.call";
-    public static final String RECORD_AUDIO = "android.gdg.record_audio";
-    public static final String RECORD_VIDEO = "android.gdg.record_video";
+    public static final String SEND_ALERT = "send_alert";
+    public static final String CALL = "call";
+    public static final String RECORD_AUDIO = "record_audio";
+    public static final String RECORD_VIDEO = "record_video";
 
     @Click(R.id.settings_btn)
     void onSettingsClicked() {
@@ -22,9 +23,12 @@ public class HomeActivity extends Activity {
 
     @AfterViews
     void init() {
-        String action = getIntent().getAction();
+        Bundle action = getIntent().getExtras();
         if (action != null) {
-            doAction(action);
+            String command = action.getString("Command");
+            if(command != null) {
+                doAction(command);
+            }
         }
     }
 

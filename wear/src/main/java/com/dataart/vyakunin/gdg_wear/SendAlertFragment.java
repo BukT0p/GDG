@@ -25,7 +25,7 @@ public class SendAlertFragment extends Fragment {
         sendBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ((HomeActivity)getActivity()).sendMessage();
+                ((HomeActivity)getActivity()).sendMessage("send_alert");
             }
         });
         return view;

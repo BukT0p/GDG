@@ -15,17 +15,11 @@ public class ListenerServiceFromWear extends WearableListenerService {
     @Override
     public void onMessageReceived(MessageEvent messageEvent) {
 
-        /*
-         * Receive the message from wear
-         */
-        if (messageEvent.getPath().equals(HELLO_WORLD_WEAR_PATH)) {
-
             Intent startIntent = new Intent(this, HomeActivity_.class);
             startIntent.putExtra("Command", messageEvent.getPath());
 
-            startIntent.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            startIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(startIntent);
-        }
 
     }
 

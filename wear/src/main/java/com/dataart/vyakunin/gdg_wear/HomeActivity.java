@@ -131,11 +131,11 @@ public class HomeActivity extends Activity implements GoogleApiClient.Connection
     /**
      * Send message to mobile handheld
      */
-    public void sendMessage() {
+    public void sendMessage(String path) {
 
         if (mNode != null && mGoogleApiClient!=null && mGoogleApiClient.isConnected()) {
             Wearable.MessageApi.sendMessage(
-                    mGoogleApiClient, mNode.getId(), HELLO_WORLD_WEAR_PATH, null).setResultCallback(
+                    mGoogleApiClient, mNode.getId(), path, null).setResultCallback(
 
                     new ResultCallback<MessageApi.SendMessageResult>() {
                         @Override
