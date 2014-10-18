@@ -48,9 +48,11 @@ public class HomeActivity extends Activity {
         } else if (action.equals(CALL)) {
             //TODO
             Toast.makeText(this, "Call", Toast.LENGTH_SHORT).show();
-            CallHelper.callToPhone(this,"+380665648199");
+            SharedPreferences prefs = getSharedPreferences("com.dataart.vyakunin.app", Context.MODE_PRIVATE);
+            String phone = prefs.getString(NUMBER_TO_PHONE, "+380665648199");
+            CallHelper.callToPhone(this, phone);
         } else if (action.equals(RECORD_AUDIO)) {
-            if(AudioRecorder.isRecording()){
+            if (AudioRecorder.isRecording()) {
                 AudioRecorder.stopRecord();
             } else {
                 AudioRecorder.startRecord();
@@ -63,7 +65,7 @@ public class HomeActivity extends Activity {
     }
 
     @Background
-     void sendBunchOfSms() {
+    void sendBunchOfSms() {
         SharedPreferences prefs = getSharedPreferences("com.dataart.vyakunin.app", Context.MODE_PRIVATE);
         String message = prefs.getString(MESSAGE_TO_SEND, "Help me!");
         Cursor cursor = getContentResolver().query(StoreContentProvider.getContentUri(Store.ContactNumbers.CONTENT_URI), null, null, null, null);
@@ -77,7 +79,7 @@ public class HomeActivity extends Activity {
     }
 
     private void sendSMS(String phoneNumber, String message) {
-        Toast.makeText(this, "Sending message:"+message+" to:"+phoneNumber, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "Sending message:" + message + " to:" + phoneNumber, Toast.LENGTH_SHORT).show();
 //        SmsManager sms = SmsManager.getDefault();
 //        sms.sendTextMessage(phoneNumber, null, message, null, null);
     }
