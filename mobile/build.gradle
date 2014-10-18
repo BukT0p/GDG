@@ -1,0 +1,74 @@
+def appendVersionNameVersionCode(variant) {
+
+    println "~ rename out file for <${variant.name}>"
+
+    def fileNamePostfix = "-v_${variant.mergedFlavor.versionName}-c_${variant.mergedFlavor.versionCode}-d_${new Date().format("MMddyyyy-HHmm")}.apk";
+
+    if(variant.zipAlign) {
+        def file = variant.outputFile
+        def fileName = file.name.replace(".apk", fileNamePostfix)
+        variant.outputFile = new File(file.parent, fileName)
+    }
+
+    def file = variant.packageApplication.outputFile
+    def fileName = file.name.replace(".apk", fileNamePostfix)
+    variant.packageApplication.outputFile = new File(file.parent, fileName)
+}
+
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.4'
+    }
+}
+
+apply plugin: 'com.android.application'
+apply plugin: 'android-apt'
+
+android {
+    compileSdkVersion 21
+    buildToolsVersion "21.0.0"
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_7
+        targetCompatibility JavaVersion.VERSION_1_7
+    }
+
+    defaultConfig {
+        applicationId "com.dataart.vyakunin.gdg_wear"
+        minSdkVersion 15
+        targetSdkVersion 21
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            runProguard false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    applicationVariants.matching({ it.buildType.name == android.buildTypes.release.name }).all {appendVersionNameVersionCode(it)}
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    wearApp project(':wear')
+    compile 'com.google.android.gms:play-services-wearable:+'
+    apt 'com.github.hamsterksu:android-annotatedsql-processor:1.8.2'
+    compile 'com.github.hamsterksu:android-annotatedsql-api:1.8.3'
+    apt 'org.androidannotations:androidannotations:3.0.1'
+    compile "org.androidannotations:androidannotations-api:3.0.1"
+    compile 'com.squareup.okhttp:okhttp:2.0.0'
+    compile 'com.squareup.okhttp:okhttp-urlconnection:2.0.0'
+    compile 'com.squareup.okio:okio:1.0.1'
+    compile ('com.squareup.retrofit:retrofit:1.6.1') {
+        exclude group: 'com.google.code.gson', module: 'gson'
+    }
+}
+apt {
+    arguments {
+        resourcePackageName android.defaultConfig.applicationId
+        androidManifestFile variant.processResources.manifestFile
+    }
+}
