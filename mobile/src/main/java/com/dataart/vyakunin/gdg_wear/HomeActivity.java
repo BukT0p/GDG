@@ -1,6 +1,7 @@
 package com.dataart.vyakunin.gdg_wear;
 
 import android.app.Activity;
+import android.widget.Toast;
 
 import org.androidannotations.annotations.AfterViews;
 import org.androidannotations.annotations.Click;
@@ -30,12 +31,16 @@ public class HomeActivity extends Activity {
     private void doAction(String action) {
         if (action.equals(SEND_ALERT)) {
             //TODO
+            Toast.makeText(this, "Send alert", Toast.LENGTH_SHORT).show();
         } else if (action.equals(CALL)) {
             //TODO
+            Toast.makeText(this, "Call", Toast.LENGTH_SHORT).show();
         } else if (action.equals(RECORD_AUDIO)) {
             //TODO
+            Toast.makeText(this, "Record audio", Toast.LENGTH_SHORT).show();
         } else if (action.equals(RECORD_VIDEO)) {
             //TODO
+            Toast.makeText(this, "Video", Toast.LENGTH_SHORT).show();
         }
     }
 }
