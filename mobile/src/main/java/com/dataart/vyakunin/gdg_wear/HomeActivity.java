@@ -1,10 +1,12 @@
 package com.dataart.vyakunin.gdg_wear;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.telephony.SmsManager;
 import android.widget.Toast;
 
@@ -61,6 +63,9 @@ public class HomeActivity extends Activity {
         } else if (action.equals(RECORD_VIDEO)) {
             //TODO
             Toast.makeText(this, "Video", Toast.LENGTH_SHORT).show();
+            Intent recordVideoIntent = new Intent(MediaStore.ACTION_VIDEO_CAPTURE);
+            recordVideoIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(recordVideoIntent);
         }
     }
 
@@ -79,8 +84,8 @@ public class HomeActivity extends Activity {
     }
 
     private void sendSMS(String phoneNumber, String message) {
-        Toast.makeText(this, "Sending message:" + message + " to:" + phoneNumber, Toast.LENGTH_SHORT).show();
-//        SmsManager sms = SmsManager.getDefault();
-//        sms.sendTextMessage(phoneNumber, null, message, null, null);
+//        Toast.makeText(this, "Sending message:" + message + " to:" + phoneNumber, Toast.LENGTH_SHORT).show();
+        SmsManager sms = SmsManager.getDefault();
+        sms.sendTextMessage(phoneNumber, null, message, null, null);
     }
 }

@@ -7,7 +7,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
-    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -23,8 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SettingsActivity_"/>
-        <service android:name=".ListenerServiceFromWear">
+        <activity android:name=".SettingsActivity_" />
+
+        <service android:name=".ListenerServiceFromWear" >
             <intent-filter>
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
             </intent-filter>
@@ -33,7 +38,12 @@
             android:name=".StoreContentProvider"
             android:authorities="com.dataart.vyakunin.store"
             android:exported="false" />
-    </application>
+    
 
+        <activity
+            android:name=".VideoCapture"
+            android:label="@string/title_activity_video_capture" >
+        </activity>
+    </application>
 
 </manifest>
