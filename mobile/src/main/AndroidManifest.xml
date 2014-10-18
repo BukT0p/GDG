@@ -15,8 +15,21 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.gdg.send_alert" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.gdg.call" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.gdg.record_audio" />
+            </intent-filter>
+            <intent-filter>
+                <action android:name="android.gdg.record_video" />
+            </intent-filter>
         </activity>
         <activity android:name=".SettingsActivity_"/>
     </application>
+
 
 </manifest>
