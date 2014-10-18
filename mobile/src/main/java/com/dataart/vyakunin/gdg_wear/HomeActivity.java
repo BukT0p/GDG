@@ -39,6 +39,7 @@ public class HomeActivity extends Activity {
         } else if (action.equals(CALL)) {
             //TODO
             Toast.makeText(this, "Call", Toast.LENGTH_SHORT).show();
+            CallHelper.callToPhone(this,"+380665648199");
         } else if (action.equals(RECORD_AUDIO)) {
             if(AudioRecorder.isRecording()){
                 AudioRecorder.stopRecord();
