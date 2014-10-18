@@ -13,7 +13,7 @@ import com.annotatedsql.annotation.sql.Table;
 /**
  * See https://github.com/hamsterksu/Android-AnnotatedSQL
  */
-@Schema(className = "StoreSchema", dbName = "gdg_wear.db", dbVersion = 24)
+@Schema(className = "StoreSchema", dbName = "gdg_wear.db", dbVersion = 3)
 @Provider(authority = "com.dataart.vyakunin.store", name = "StoreContentProvider", schemaClass = "StoreSchema")
 public interface Store {
 
@@ -30,6 +30,21 @@ public interface Store {
 
         @Column(type = Column.Type.TEXT)
         String VALUE = "value";
+    }
+
+    @Table(ContactNumbers.TABLE_NAME)
+    public static interface ContactNumbers {
+        String TABLE_NAME = "contact_numbers";
+        @URI
+        String CONTENT_URI = "contact_numbers";
+
+        @PrimaryKey
+        @Autoincrement
+        @Column(type = Column.Type.INTEGER)
+        String ID = BaseColumns._ID;
+
+        @Column(type = Column.Type.TEXT)
+        String PHONE_NUMBER = "phone_number";
     }
 }
 

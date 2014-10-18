@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.dataart.vyakunin.gdg_wear" >
+    <uses-permission android:name="android.permission.SEND_SMS"/>
 
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -21,18 +22,6 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-            <intent-filter>
-                <action android:name="android.gdg.send_alert" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.gdg.call" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.gdg.record_audio" />
-            </intent-filter>
-            <intent-filter>
-                <action android:name="android.gdg.record_video" />
-            </intent-filter>
         </activity>
         <activity android:name=".SettingsActivity_"/>
         <service android:name=".ListenerServiceFromWear">
@@ -40,6 +29,10 @@
                 <action android:name="com.google.android.gms.wearable.BIND_LISTENER" />
             </intent-filter>
         </service>
+        <provider
+            android:name=".StoreContentProvider"
+            android:authorities="com.dataart.vyakunin.store"
+            android:exported="false" />
     </application>
 
 
