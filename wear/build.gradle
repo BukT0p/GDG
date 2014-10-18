@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.dataart.vyakunin.gdg_wear"
-        minSdkVersion 14
+        minSdkVersion 20
         targetSdkVersion 20
         versionCode 1
         versionName "1.0"
@@ -22,6 +22,6 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.google.android.support:wearable:+'
-    compile 'com.google.android.gms:play-services-wearable:6.1.11'
+    compile 'com.google.android.support:wearable:1.0.0'
+    compile 'com.android.support:support-v4:20.0.0'
 }
