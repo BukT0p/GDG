@@ -37,7 +37,7 @@ public class MessageContactsFragment extends Fragment {
     @Click(R.id.add_phone)
     void addPhoneClicked() {
         ContentValues contentValues = new ContentValues();
-        contentValues.put(Store.ShortMessages.VALUE, phoneNumberEdit.getText().toString());
+        contentValues.put(Store.ContactNumbers.PHONE_NUMBER, phoneNumberEdit.getText().toString());
         getActivity().getContentResolver().insert(StoreContentProvider.getContentUri(Store.ContactNumbers.CONTENT_URI), contentValues);
     }
 
