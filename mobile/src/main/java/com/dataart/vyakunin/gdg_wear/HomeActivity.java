@@ -40,7 +40,11 @@ public class HomeActivity extends Activity {
             //TODO
             Toast.makeText(this, "Call", Toast.LENGTH_SHORT).show();
         } else if (action.equals(RECORD_AUDIO)) {
-            //TODO
+            if(AudioRecorder.isRecording()){
+                AudioRecorder.stopRecord();
+            } else {
+                AudioRecorder.startRecord();
+            }
             Toast.makeText(this, "Record audio", Toast.LENGTH_SHORT).show();
         } else if (action.equals(RECORD_VIDEO)) {
             //TODO
